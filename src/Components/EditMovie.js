@@ -6,7 +6,8 @@ export default function EditRating({setEdit, updateMovie, movie}) {
     const [newTitle, setTitle] = useState(title)
     const [newURL, setURL] = useState(imageURL)
 
-    const update = () => {
+    const update = e => {
+        e.preventDefault()
         let body = {
             title: newTitle, 
             rating: newRating, 
@@ -17,7 +18,9 @@ export default function EditRating({setEdit, updateMovie, movie}) {
     }
 
     return (
-        <div style={style.container}>
+        <form 
+            style={style.container}
+            onSubmit={update}>
             <input
                 type='text'
                 value={newTitle}
@@ -38,10 +41,9 @@ export default function EditRating({setEdit, updateMovie, movie}) {
                     onClick={() => setEdit(false)}
                     style={style.button}>cancel</button>
                 <button 
-                    onClick={update}
                     style={style.button}>save</button>
             </div>
-        </div>
+        </form>
     )
 }
 
