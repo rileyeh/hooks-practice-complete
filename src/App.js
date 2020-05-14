@@ -10,12 +10,10 @@ export default function App() {
     const [movies, setMovies] = useState([])
 
     const moviesCallback = ({ data: movies }) => setMovies(movies)
+
     const getAllMovies = () => axios.get(baseURL).then(moviesCallback)
     const createMovie = body => axios.post(baseURL, body).then(moviesCallback)
-    const deleteMovie = id => {
-        console.log(id)
-        axios.delete(`${baseURL}/${id}`).then(moviesCallback)
-    }
+    const deleteMovie = id => axios.delete(`${baseURL}/${id}`).then(moviesCallback)
     const updateMovie = (id, body) => axios.put(`${baseURL}/${id}`, body).then(moviesCallback)
 
     useEffect(() => {
