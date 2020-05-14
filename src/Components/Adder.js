@@ -6,7 +6,7 @@ export default function Adder(props) {
     const [imageURL, setURL] = useState('')
 
     const handleSubmit = e => {
-        e.preventDeafult()
+        e.preventDefault()
         props.createMovie({title, rating, imageURL})
         setTitle('')
         setRating('')
