@@ -5,7 +5,8 @@ export default function Adder(props) {
     const [rating, setRating] = useState('')
     const [imageURL, setURL] = useState('')
 
-    const handleSubmit = () => {
+    const handleSubmit = e => {
+        e.preventDeafult()
         props.createMovie({title, rating, imageURL})
         setTitle('')
         setRating('')
