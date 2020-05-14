@@ -5,9 +5,7 @@ export default function Adder(props) {
     const [rating, setRating] = useState('')
     const [imageURL, setURL] = useState('')
 
-    const changeHandler = (type, value) => type(value)
-
-    const handleClick = () => {
+    const handleSubmit = () => {
         props.createMovie({title, rating, imageURL})
         setTitle('')
         setRating('')
@@ -15,31 +13,32 @@ export default function Adder(props) {
     }
 
     return (
-        <div style={style.container}>
+        <form 
+            style={style.container}
+            onSubmit={handleSubmit}>
             <input 
                 type='text'
                 value={title}
                 style={style.input} 
                 placeholder={`What's the movie's title?`}
-                onChange={e => changeHandler(setTitle, e.target.value)} />
+                onChange={e => setTitle(e.target.value)} />
             <input 
                 type='text'
                 value={rating}
                 style={style.input} 
                 placeholder={`How many stars do you give this movie?`}
-                onChange={e => changeHandler(setRating, e.target.value)} />
+                onChange={e => setRating(e.target.value)} />
             <input 
                 type='text'
                 value={imageURL}
                 style={style.input} 
                 placeholder='Paste an image URL'
-                onChange={e => changeHandler(setURL, e.target.value)} />
+                onChange={e => setURL(e.target.value)} />
             <button 
-                onClick={handleClick}
                 style={style.button}>
                     add movie
             </button>
-        </div>
+        </form>
     )
 }
 
